@@ -61,3 +61,9 @@ Now any account under _Users should be able to login to this workstation.
 
 ## Extra notes
 Not sure why but for my installation, I needed to go into my virtual box file through the command line and enter this command "./VBoxManage modifyvm "DC" --hpet on" in order for the VM to not boot instantly and hang.
+
+## Resource used
+[https://youtu.be/MHsI8hJmggI?si=zPfmWqB8cfqgEOk8](Josh Madakor's lab)
+[https://www.virtualbox.org/wiki/Downloads](VirtualBox)
+[https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025](Windows 2025 Server ISO)
+[https://www.microsoft.com/en-us/software-download/windows10](Windows 10 Media Creation)
