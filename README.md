@@ -24,7 +24,22 @@ This lab is just a demonstration of implementing active directory using virtual 
 ## Configure DHCP, DNS, and RAS
 
 ## Add users
+Run windows powershell ISE as administrator
+Open scripts and select the powershell file
+[picture]
 
+We should be unable to run without enabling some settings
+[picture]
+
+Execute the command "Set-ExecutionPolicy Unrestricted"
+- note: do not do this in a corporate environement, since this is a lab it should be done for convenience.
+
+Change directory to the folder that has the script so it can read the text file with a bunch of names.
+run the script
+[picture]
+
+Verify that the organizational unit, _Users, was created and populated. 
+[picture] 
 
 ## Configure a client workstation
 Create the Client VM in windows 10 and name it "CLIENT1". 
