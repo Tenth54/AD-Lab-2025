@@ -17,7 +17,7 @@ This lab is just a demonstration of implementing active directory using virtual 
 - Under settings, make sure the Domain Controller (Windows Server 2025) has two network adapters. One adapter should be NAT by default and the other should be enabled and set to Internal.
 - For the Clients (normal Windows 10 machines) make sure to change the network adapter settings to Internal. 
     - This serves as a representation of a corporate's internal network.
-- On VirtualBox, make sure to turn off unattended install in order to download Windows 10 Pro without a product key. Alternatively, I think you could just use the windows 10 pro generic key and it should still work.
+
 
 ## Install and Configure Active Directory Domain Services
 
