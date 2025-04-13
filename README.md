@@ -20,7 +20,32 @@ This lab is just a demonstration of implementing active directory using virtual 
 
 
 ## Install and Configure Active Directory Domain Services
+Install Active Directory Domain Services through the server manager's "add roles and features"
+[picture]
 
+Promote to Domain Controller
+[picture]
+
+Setup a new forest and establish your domain name. It could be anything, I ultimately chose activedirectorylab.com
+[picture]
+
+Restart and login to the newly created domain account.
+[picture]
+
+Now we create an organizational unit in order to create dedicated admin accounts instead of using the built in admin account.
+[picture]
+
+Add a new user to the admin OU 
+[picture]
+
+Set the password to never expire since its a lab environment
+[picture]
+
+Go to new user’s properties and give them the admin role by entering "Domain Admins" for object name
+[picture]
+
+restart and sign in to our newly created admin account
+[picture]
 ## Configure DHCP, DNS, and RAS
 
 ## Add users
