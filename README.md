@@ -46,7 +46,43 @@ Go to new user’s properties and give them the admin role by entering "Domain A
 
 restart and sign in to our newly created admin account
 [picture]
-## Configure DHCP, DNS, and RAS
+
+## Configure RAS and NAT
+Next we install a RAS/NAT to keep our client’s internet private/ within the company’s network while allowing them to connect to the internet by routing through the Domain Controller.
+
+Install remote access through the server manager's "add roles and features"
+[picture]
+
+Select routing during role services, else go with the defaults.
+(forgot to take screenshot)
+
+Select "Routing and Remote Access" under tools in windows server manager.
+Right click the domain controller, click configure, and enable "Routing and Remote Access"
+Here we select NAT 
+[picture]
+
+Select the NIC that will connect us to the internet.
+If nat works it should give our clients internet access
+[picture]
+
+## Configure DHCP and DNS
+Next we want to configure the DHCP server for our domain controller. This allows us to assign our client workstations an IP address
+
+Once more, go to "roles and features" in the widnows server manager and select DHCP Server.
+[picture]
+
+Go with the default settings
+
+Select DHCP under tools in windows server manager and add scope
+[picture]
+
+Declare the DHCP scope/address range. Lease time depends on the service, but we'll go with the default since it's a lab.
+[picture]
+
+Add our router/default gateway. In this case, it will be the address of the domain controller. With NAT, our domain controller will forward the clients to the internet.
+[picture]
+
+Select the same IP for DNS
 
 ## Add users
 Run windows powershell ISE as administrator
