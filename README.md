@@ -13,6 +13,9 @@ This lab is just a demonstration of implementing active directory using virtual 
 - Windows 10 
 
 ## Deployment
+Download the Windows Server 2025 iso and create a new virtual machine on VirtualBox.
+ 
+
 
 - Under settings, make sure the Domain Controller (Windows Server 2025) has two network adapters. One adapter should be NAT by default and the other should be enabled and set to Internal.
 - For the Clients (normal Windows 10 machines) make sure to change the network adapter settings to Internal. 
