@@ -15,12 +15,15 @@ This lab is just a demonstration of implementing active directory using virtual 
 ## Deployment
 Download the Windows Server 2025 iso and create a new virtual machine on VirtualBox.
  
+Check the network connections and distinguish between the normal adapter and the internal adapter.
+Naming them will help with selection later. 
+![Normal adapter](/images/AD%20Lab_1.png)
+![Internal Adapter](/images/AD%20Lab_2.png)
 
+You will notice that the normal adapter as a normal ip address where as the internal adapter has an APIPA address. This means that the it has not received
 
-- Under settings, make sure the Domain Controller (Windows Server 2025) has two network adapters. One adapter should be NAT by default and the other should be enabled and set to Internal.
-- For the Clients (normal Windows 10 machines) make sure to change the network adapter settings to Internal. 
-    - This serves as a representation of a corporate's internal network.
-
+Now open the internal adapter's properties and assign a static IP address. Also assign the loopback address for our DNS as it will be implemented later when we get Active Directory up and running.
+![Internal DNS](/images/AD%20Lab_3.png)
 
 ## Install and Configure Active Directory Domain Services
 Install Active Directory Domain Services through the server manager's "add roles and features"
