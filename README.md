@@ -20,9 +20,9 @@ Naming them will help with selection later.
 ![Normal adapter](/images/AD%20Lab_1.png)
 ![Internal Adapter](/images/AD%20Lab_2.png)
 
-You will notice that the normal adapter as a normal ip address where as the internal adapter has an APIPA address. This means that the it has not received
+You will notice that the normal adapter as a normal ip address where as the internal adapter has an APIPA address. This means that the it was unable to find a DHCP server.
 
-Now open the internal adapter's properties and assign a static IP address. Also assign the loopback address for our DNS as it will be implemented later when we get Active Directory up and running.
+Now open the internal adapter's properties and assign a static IP address in "Internet Protocol Version 4 (TCP/IPv4)". Also assign the loopback address for our DNS as it will be implemented later when we get Active Directory up and running.
 ![Internal DNS](/images/AD%20Lab_3.png)
 
 ## Install and Configure Active Directory Domain Services
