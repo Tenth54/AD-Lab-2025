@@ -141,9 +141,7 @@ Now any account under _Users should be able to login to this workstation.
 ## Troubleshooting
 - I initially misconfigured the second NIC, which caused the DHCP and DNS services to break. As a result the internal server would have an APIPA address.
     - After inputting the correct settings for the second NIC, I had to reconfigure the DNS and DHCP services. Then I logged back into the client workstation to check if I was under the correct domain.
-
-## Extra notes
-Not sure why but for my installation, I needed to go into my virtual box file through the command line and enter this command "./VBoxManage modifyvm "DC" --hpet on" in order for the VM to not boot instantly and hang.
+- Not sure why, but for my installation, I needed to go into my virtual box file through the command line and enter this command "./VBoxManage modifyvm "DC" --hpet on" in order to prevent the VM from booting instantly. When it boots instantly, it would hang and nothing would happen.
 
 ## Resource used
 [https://youtu.be/MHsI8hJmggI?si=zPfmWqB8cfqgEOk8](Josh Madakor's lab)
