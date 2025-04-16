@@ -16,49 +16,64 @@ This lab is just a demonstration of implementing active directory using virtual 
 Download the Windows Server 2025 iso and create a new virtual machine on VirtualBox.
  
 Check the network connections and distinguish between the normal adapter and the internal adapter.
+
 Naming them will help with selection later. 
+
 ![Normal adapter](/images/AD%20Lab_1.png)
 ![Internal Adapter](/images/AD%20Lab_2.png)
 
 You will notice that the normal adapter as a normal ip address where as the internal adapter has an APIPA address. This means that the it was unable to find a DHCP server.
 
 Now open the internal adapter's properties and assign a static IP address in "Internet Protocol Version 4 (TCP/IPv4)". Also assign the loopback address for our DNS as it will be implemented later when we get Active Directory up and running.
+
 ![Internal DNS](/images/AD%20Lab_3.png)
 
 ## Install and Configure Active Directory Domain Services
 Install Active Directory Domain Services through the server manager's "add roles and features"
+
 ![Active Directory Domain Services](/images/AD%20Lab_4.png)
 
 Promote to Domain Controller
+
 ![promote to Domain Controller](/images/AD%20Lab_5.png)
 
 Setup a new forest and establish your domain name. It could be anything, I ultimately chose activedirectorylab.com
+
 ![setup forest](/images/AD%20Lab_6.png)
 
 Restart and login to the newly created domain account.
+
 ![restart](/images/AD%20Lab_7.png)
 
 Now we create an organizational unit in order to create dedicated admin accounts instead of using the built in admin account.
+
 ![OU](/images/AD%20Lab_8.png)
+
 ![admin folder creation](/images/AD%20Lab_9.png)
 
 Add a new user to the admin OU 
+
 ![new admin account](/images/AD%20Lab_10.png)
+
 ![user info](/images/AD%20Lab_11.png)
 
 Set the password to never expire since its a lab environment
+
 ![password](/images/AD%20Lab_12.png)
 
 Go to new user’s properties and give them the admin role by entering "Domain Admins" for object name
+
 ![Domain Admin](/images/AD%20Lab_13.png)
 
 restart and sign in to our newly created admin account
+
 ![restart2](/images/AD%20Lab_14.png)
 
 ## Configure RAS and NAT
 Next we install a RAS/NAT to keep our client’s internet private/ within the company’s network while allowing them to connect to the internet by routing through the Domain Controller.
 
 Install remote access through the server manager's "add roles and features"
+
 ![remote access](/images/AD%20Lab_15.png)
 
 Select routing during role services, else go with the defaults.
@@ -67,16 +82,19 @@ Select routing during role services, else go with the defaults.
 Select "Routing and Remote Access" under tools in windows server manager.
 Right click the domain controller, click configure, and enable "Routing and Remote Access"
 Here we select NAT 
+
 ![NAT](/images/AD%20Lab_16.png)
 
 Select the NIC that will connect us to the internet.
-If nat works it should give our clients internet access
+If nat works it should give our clients internet access.
+
 ![Internet connection](/images/AD%20Lab_17.png)
 
 ## Configure DHCP and DNS
 Next we want to configure the DHCP server for our domain controller. This allows us to assign our client workstations an IP address
 
 Once more, go to "roles and features" in the widnows server manager and select DHCP Server.
+
 ![dhcp](/images/AD%20Lab_18.png)
 
 Go with the default settings
@@ -84,30 +102,37 @@ Go with the default settings
 Select DHCP under tools in windows server manager and add scope
 
 Declare the DHCP scope/address range. Lease time depends on the service, but we'll go with the default since it's a lab.
+
 ![DHCP scope](/images/AD%20Lab_19.png)
 
 Add our router/default gateway. In this case, it will be the address of the domain controller. With NAT, our domain controller will forward the clients to the internet.
+
 ![Router](/images/AD%20Lab_20.png)
 
 Select the same IP for DNS
 
-## Add users
+## Adding users
 Run windows powershell ISE as administrator
 Open scripts and select the powershell file
+
 ![powershell script](/images/AD%20Lab_22.png)
 
 We should be unable to run without enabling some settings
+
 ![powershell error](/images/AD%20Lab_23.png)
 
 Execute the command "Set-ExecutionPolicy Unrestricted"
 - note: do not do this in a corporate environement, since this is a lab it should be done for convenience.
+
 ![bypass](/images/AD%20Lab_24.png)
 
 Change directory to the folder that has the script so it can read the text file with a bunch of names.
 run the script.
+
 ![running script](/images/AD%20Lab_25.png)
 
 Verify that the organizational unit, _Users, was created and populated. 
+
 ![user OU](/images/AD%20Lab_26.png)
 
 ## Configure a client workstation
@@ -117,25 +142,32 @@ If you are doing an unattended install, make sure you select Windows 10 Pro in o
 If you are doing an attended install, I think you can use a windows 10 pro generic key for an in-place upgrade.
 
 When the installation is finished, we run ipconfig to confirm that we are under the internal network.
+
 ![ipconfig](/images/AD%20Lab_27.png)
 
 Next we test out our network by pinging a website like google.com. If we are successful that means our domain controller is applying the NAT process properly and that our DNS is working as well. 
+
 ![ping test](/images/AD%20Lab_28.png)
 
 ### Joining Domain and Changing Workstation's Name
 Right click the windows icon and click on settings. In the settings, click advanced name change  under domain and click change to join our domain. 
+
 ![joining domain](/images/AD%20Lab_29.png)
 
 input our credentials and restart
+
 ![credentials](/images/AD%20Lab_30.png)
 
 Verify that the client has received an IP by checking the DC's DHCP server lease logs.
+
 ![workstation lease](/images/AD%20Lab_31.png)
 
 Verify that CLIENT1 shows up in the Active Directory Users and Computers under the "Computers" folder in the domain.
+
 ![verify client](/images/AD%20Lab_32.png)
 
 Now any account under _Users should be able to login to this workstation. 
+
 ![user login](/images/AD%20Lab_33.png)
 
 ## Troubleshooting
