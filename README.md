@@ -29,15 +29,15 @@ Now open the internal adapter's properties and assign a static IP address in "In
 ![Internal DNS](/images/AD%20Lab_3.png)
 
 ## Install and Configure Active Directory Domain Services
-Install Active Directory Domain Services through the server manager's "add roles and features"
+Install Active Directory Domain Services through the server manager's "add roles and features".
 
 ![Active Directory Domain Services](/images/AD%20Lab_4.png)
 
-Promote to Domain Controller
+Promote to Domain Controller.
 
 ![promote to Domain Controller](/images/AD%20Lab_5.png)
 
-Setup a new forest and establish your domain name. It could be anything, I ultimately chose activedirectorylab.com
+Setup a new forest and establish your domain name. It could be anything, I ultimately chose activedirectorylab.com.
 
 ![setup forest](/images/AD%20Lab_6.png)
 
@@ -51,28 +51,28 @@ Now we create an organizational unit in order to create dedicated admin accounts
 
 ![admin folder creation](/images/AD%20Lab_9.png)
 
-Add a new user to the admin OU 
+Add a new user to the admin OU. 
 
 ![new admin account](/images/AD%20Lab_10.png)
 
 ![user info](/images/AD%20Lab_11.png)
 
-Set the password to never expire since its a lab environment
+Set the password to never expire since its a lab environment.
 
 ![password](/images/AD%20Lab_12.png)
 
-Go to new user’s properties and give them the admin role by entering "Domain Admins" for object name
+Go to new user’s properties and give them the admin role by entering "Domain Admins" for object name.
 
 ![Domain Admin](/images/AD%20Lab_13.png)
 
-restart and sign in to our newly created admin account
+restart and sign in to our newly created admin account.
 
 ![restart2](/images/AD%20Lab_14.png)
 
 ## Configure RAS and NAT
 Next we install a RAS/NAT to keep our client’s internet private/ within the company’s network while allowing them to connect to the internet by routing through the Domain Controller.
 
-Install remote access through the server manager's "add roles and features"
+Install remote access through the server manager's "add roles and features".
 
 ![remote access](/images/AD%20Lab_15.png)
 
@@ -80,8 +80,8 @@ Select routing during role services, else go with the defaults.
 (forgot to take screenshot)
 
 Select "Routing and Remote Access" under tools in windows server manager.
-Right click the domain controller, click configure, and enable "Routing and Remote Access"
-Here we select NAT 
+Right click the domain controller, click configure, and enable "Routing and Remote Access".
+Here we select NAT.
 
 ![NAT](/images/AD%20Lab_16.png)
 
@@ -91,15 +91,15 @@ If nat works it should give our clients internet access.
 ![Internet connection](/images/AD%20Lab_17.png)
 
 ## Configure DHCP and DNS
-Next we want to configure the DHCP server for our domain controller. This allows us to assign our client workstations an IP address
+Next we want to configure the DHCP server for our domain controller. This allows us to assign our client workstations an IP address.
 
 Once more, go to "roles and features" in the widnows server manager and select DHCP Server.
 
 ![dhcp](/images/AD%20Lab_18.png)
 
-Go with the default settings
+Go with the default settings.
 
-Select DHCP under tools in windows server manager and add scope
+Select DHCP under tools in windows server manager and add scope.
 
 Declare the DHCP scope/address range. Lease time depends on the service, but we'll go with the default since it's a lab.
 
@@ -109,19 +109,19 @@ Add our router/default gateway. In this case, it will be the address of the doma
 
 ![Router](/images/AD%20Lab_20.png)
 
-Select the same IP for DNS
+Select the same IP for DNS.
 
 ## Adding users
-Run windows powershell ISE as administrator
-Open scripts and select the powershell file
+Run windows powershell ISE as administrator.
+Open scripts and select the powershell file.
 
 ![powershell script](/images/AD%20Lab_22.png)
 
-We should be unable to run without enabling some settings
+We should be unable to run without enabling some settings.
 
 ![powershell error](/images/AD%20Lab_23.png)
 
-Execute the command "Set-ExecutionPolicy Unrestricted"
+Execute the command "Set-ExecutionPolicy Unrestricted".
 - note: do not do this in a corporate environement, since this is a lab it should be done for convenience.
 
 ![bypass](/images/AD%20Lab_24.png)
@@ -154,7 +154,7 @@ Right click the windows icon and click on settings. In the settings, click advan
 
 ![joining domain](/images/AD%20Lab_29.png)
 
-input our credentials and restart
+input our credentials and restart.
 
 ![credentials](/images/AD%20Lab_30.png)
 
